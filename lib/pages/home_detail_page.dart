@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/widgets/theme.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
   final Item catalog;
@@ -11,7 +12,9 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -19,7 +22,7 @@ class HomeDetailPage extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
-            '\$${catalog.price}'.text.bold.xl.red800.make(),
+            '\$${catalog.price}'.text.bold.xl4.red800.make(),
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
@@ -29,10 +32,10 @@ class HomeDetailPage extends StatelessWidget {
                   shape: MaterialStateProperty.all(
                     StadiumBorder(),
                   )),
-              child: 'Buy'.text.make(),
-            ).wh(100, 50)
+              child: 'Add to cart'.text.make(),
+            ).wh(120, 50)
           ],
-        ).p16(),
+        ).p32(),
       ),
       body: SafeArea(
         bottom: false,
@@ -52,21 +55,27 @@ class HomeDetailPage extends StatelessWidget {
                 child: Container(
                   color: Colors.white,
                   width: context.screenWidth,
-                  child: Column(
-                    children: [
-                      catalog.name.text.xl4
-                          .color(MyTheme.darkBulishColor)
-                          .bold
-                          .make(),
-                      catalog.desc.text.xl.make(),
-                      10.heightBox,
-                    ],
-                  ).py64(),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        catalog.name.text.xl4
+                            .color(MyTheme.darkBulishColor)
+                            .bold
+                            .make(),
+                        catalog.desc.text.xl.make(),
+                        10.heightBox,
+                        'Cillum aliqua occaecat proident sint Lorem est nisi sunt. Sit aliquip incididunt velit ad reprehenderit enim ex labore eu anim est exercitation amet. Mollit velit proident nostrud aliqua irure ullamco nostrud velit irure aliquip mollit. Id anim in exercitation est mollit. Mollit minim quis aliqua officia veniam non ut elit consequat dolor pariatur.Officia ex Lorem veniam deserunt eu deserunt excepteur officia quis laborum aliqua anim.'
+                            .text
+                            .make()
+                            .p16()
+                      ],
+                    ).py64(),
+                  ),
                 ),
               ),
-            )
+            ),
           ],
-        ).p16(),
+        ),
       ),
     );
   }
