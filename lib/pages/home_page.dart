@@ -48,10 +48,9 @@ class _HomePageState extends State<HomePage> {
     // final dummyList = List.generate(50, (index) => CatalogModel.items[0]);
 
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: MyTheme.darkBulishColor,
         child: Icon(
           CupertinoIcons.cart,
         ),
