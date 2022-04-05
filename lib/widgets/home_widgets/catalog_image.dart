@@ -11,6 +11,6 @@ class CatlogImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       image,
-    ).box.p8.color(MyTheme.creamColor).make().p16().w40(context);
+    ).box.p8.color(context.canvasColor).make().p16().w40(context);
   }
 }
